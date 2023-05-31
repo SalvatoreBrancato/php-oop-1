@@ -20,8 +20,18 @@ class Movie{
     }
 }
 
-$FilmUno = new Movie('Vacanze di natale', 'Comico', '120 min.');
-$FilmDue = new Movie('IT', 'Horror', '160 min.');
+class Genere{
+    public $genere1;
+    public $genere2;
+
+    function __construct($_genere1, $_genere2){
+        $this->genere1 = $_genere1;
+        $this->genere2 = $_genere2;
+    }
+}
+
+$FilmUno = new Movie('Vacanze di natale', new Genere('Comico', 'Bambini'), '120 min.');
+$FilmDue = new Movie('IT', new Genere('Horror', 'Triller'), '160 min.');
 
 var_dump($FilmUno);
 var_dump($FilmDue);
@@ -39,12 +49,14 @@ var_dump($FilmDue);
 <body>
     
     <ul><?php echo $FilmUno->titolo; ?>
-        <li><?php echo $FilmUno->genere; ?></li>
+        <li><?php echo $FilmUno->genere->genere1;?></li>
+        <li><?php echo $FilmUno->genere->genere2;?></li>
         <li><?php echo $FilmUno->durata; ?></li>
     </ul>
     <hr>
     <ul><?php echo $FilmDue->titolo; ?>
-        <li><?php echo $FilmDue->genere; ?></li>
+        <li><?php echo $FilmDue->genere->genere1; ?></li>
+        <li><?php echo $FilmDue->genere->genere2; ?></li>
         <li><?php echo $FilmDue->durata; ?></li>
     </ul>
 
