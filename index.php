@@ -6,12 +6,13 @@
 <?php
 require_once __DIR__ . '/models/movie.php';
 require_once __DIR__ . '/models/genere.php';
+require_once __DIR__ . '/database/db.php';
 
-$FilmUno = new Movie('Vacanze di natale', new Genere('Comico', 'Bambini'), '120 min.');
-$FilmDue = new Movie('IT', new Genere('Horror', 'Triller'), '160 min.');
+// $FilmUno = new Movie('Vacanze di natale', new Genere('Comico', 'Bambini'), '120 min.');
+// $FilmDue = new Movie('IT', new Genere('Horror', 'Triller'), '160 min.');
 
-var_dump($FilmUno);
-var_dump($FilmDue);
+// var_dump($FilmUno);
+// var_dump($FilmDue);
 
 ?>
 
@@ -21,23 +22,19 @@ var_dump($FilmDue);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>OOP</title>
 </head>
 <body>
-    
-    <ul><?php echo $FilmUno->titolo; ?>
-        <li><?php echo $FilmUno->genere->genere1;?></li>
-        <li><?php echo $FilmUno->genere->genere2;?></li>
-        <li><?php echo $FilmUno->durata; ?></li>
+    <?php foreach( $arrayMovie as $elem ) { ?>
+    <ul><?php echo $elem->titolo; ?>
+        <li><?php echo $elem->genere->genere1;?></li>
+        <li><?php echo $elem->genere->genere2;?></li>
+        <li><?php echo $elem->durata; ?></li>
     </ul>
+    <?php } ?>
     <hr>
-    <ul><?php echo $FilmDue->titolo; ?>
-        <li><?php echo $FilmDue->genere->genere1; ?></li>
-        <li><?php echo $FilmDue->genere->genere2; ?></li>
-        <li><?php echo $FilmDue->durata; ?></li>
-    </ul>
 
-    <h3><?php echo $FilmUno->AvvioFilm()?></h3>
+    <h3><?php echo $arrayMovie[0]->AvvioFilm()?></h3>
 
 </body>
 </html>
